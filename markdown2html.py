@@ -5,7 +5,6 @@ from sys import argv as arg
 
 if __name__ == "__main__":
 
-    # if number of arguments is < 3, print an error
     if len(arg) < 3:
         print("Usage: ./markdown2html.py README.md README.html")
         exit(1)
