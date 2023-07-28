@@ -4,7 +4,7 @@ from sys import argv as arg
 
 
 if __name__ == "__main__":
-
+    """mod"""
     if len(arg) < 3:
         print("Usage: ./markdown2html.py README.md README.html")
         exit(1)
@@ -33,6 +33,5 @@ def convert_md_html(md_file, html_file):
         html.write("")
 
 
-# Use the method
 convert_md_html(md_file, html_file)
 exit(0)
