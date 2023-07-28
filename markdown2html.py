@@ -17,7 +17,6 @@ def convert_md_html(md_file, html_file):
         print(f"Missing {md_file}")
         exit(1)
 
-    print("Missing README.md")
     exit(1)
 
 
