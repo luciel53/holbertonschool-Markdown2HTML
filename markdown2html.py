@@ -17,7 +17,10 @@ def convert_md_html(md_file, html_file):
         print(f"Missing {md_file}")
         exit(1)
 
-    exit(1)
+    # Open the output file in html
+    with open(html_file, 'w') as html:
+        # Write "" in document
+        html.write("")
 
 
 if __name__ == "__main__":
