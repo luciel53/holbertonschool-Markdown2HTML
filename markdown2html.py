@@ -1,19 +1,17 @@
 #!/usr/bin/python3
-"""
-A program to convert a markdown file in an html file
-"""
-from sys import argv as arg
+"""A program to convert a markdown file in an html file"""
+from sys import argv
 
 
 if __name__ == "__main__":
     """mod"""
-    if len(arg) < 3:
+    if len(argv) < 3:
         print("Usage: ./markdown2html.py README.md README.html")
         exit(1)
     else:
-        # Give arguments to the variables
-        md_file = arg[1]
-        html_file = arg[2]
+        # Give argvuments to the variables
+        md_file = argv[1]
+        html_file = argv[2]
 
 
 def convert_md_html(md_file, html_file):
