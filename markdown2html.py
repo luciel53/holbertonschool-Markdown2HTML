@@ -3,7 +3,7 @@
 A program to convert a markdown file to an html file
 """
 
-from sys import argv, exit
+from sys import argv
 
 def convert_md_html(md_file, html_file):
     """Convert a markdown file to a html file"""
