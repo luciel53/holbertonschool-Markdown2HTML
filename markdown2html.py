@@ -14,7 +14,7 @@ def convert_md_html(md_file, html_file):
 
     # if md_file does not exist, message error
     except FileNotFoundError:
-        sys.stderr.write(f"Missing {md_file}")
+        sys.stderr.write(f"Missing {md_file}\n")
         exit(1)
 
     # Open the output file in html
@@ -25,7 +25,7 @@ def convert_md_html(md_file, html_file):
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
-        sys.stderr.write("Usage: ./markdown2html.py README.md README.html")
+        sys.stderr.write("Usage: ./markdown2html.py README.md README.html\n")
         exit(1)
     else:
         # Give arguments to the variables
