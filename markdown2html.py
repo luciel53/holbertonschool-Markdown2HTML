@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """A program to convert a markdown file in an html file"""
-
 from sys import argv as arg
 
 
