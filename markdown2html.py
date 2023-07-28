@@ -21,7 +21,6 @@ def convert_md_html(md_file, html_file):
 
 
 if __name__ == "__main__":
-    """mod"""
     if len(arg) < 3:
         print("Usage: ./markdown2html.py README.md README.html")
         exit(1)
@@ -30,5 +29,5 @@ if __name__ == "__main__":
         md_file = arg[1]
         html_file = arg[2]
 
-convert_md_html(md_file, html_file)
-exit(0)
+    convert_md_html(md_file, html_file)
+    exit(0)
