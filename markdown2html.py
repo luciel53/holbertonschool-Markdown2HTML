@@ -11,6 +11,8 @@ Requirements:
     If the Markdown file doesn’t exist: print in STDER Missing <filename> and exit 1
     Otherwise, print nothing and exit 0
 """
+
+
 from sys import argv as arg
 
 
