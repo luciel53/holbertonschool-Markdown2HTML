@@ -1,34 +1,39 @@
 #!/usr/bin/python3
-"""Module for converting markdown files to html files"""
-from sys import argv, exit
+"""A program to convert a markdown file in an html file"""
+from sys import argv as arg
 
 
 if __name__ == "__main__":
-    """Function for converting"""
-    if len(argv) < 3:
-        exit("Usage: ./markdown2html.py README.md README.html")
+
+    # if number of arguments is < 3, print an error
+    if len(arg) < 3:
+        print("Usage: ./markdown2html.py README.md README.html")
+        exit(1)
+
+    else:
+        # else, give arguments to the variables
+        md_file = arg[1]
+        html_file = arg[2]
+
+
+def convert_md_html(md_file, html_file):
+    """Convert a markdown file in a html file"""
+
     try:
-        with open(argv[1], "r") as markdown_file:
-            with open(argv[2], "w") as html_file:
-                for line in markdown_file:
-                    if "###### " in line:
-                        line = line.replace("###### ", "<h6>")
-                        line = line.replace("\n", "</h6>\n")
-                    elif "##### " in line:
-                        line = line.replace("##### ", "<h5>")
-                        line = line.replace("\n", "</h5>\n")
-                    elif "#### " in line:
-                        line = line.replace("#### ", "<h4>")
-                        line = line.replace("\n", "</h4>\n")
-                    elif "### " in line:
-                        line = line.replace("### ", "<h3>")
-                        line = line.replace("\n", "</h3>\n")
-                    elif "## " in line:
-                        line = line.replace("## ", "<h2>")
-                        line = line.replace("\n", "</h2>\n")
-                    elif "# " in line:
-                        line = line.replace("# ", "<h1>")
-                        line = line.replace("\n", "</h1>\n")
-                    html_file.write(line)
-    except:
-        exit("Missing {}".format(argv[1]))
+        # Open the md file, read it and stock it in the variable md_content
+        with open(md_file, 'r') as md:
+            md_content = md.read()
+
+    # if md_file does not exist, message error
+    except FileNotFoundError:
+        print("Missing <filename>")
+        exit(1)
+
+    # Open the output file in html
+    with open(html_file, 'w') as html:
+        html.write("")
+
+
+# Use the method
+convert_md_html(md_file, html_file)
+exit(0)
