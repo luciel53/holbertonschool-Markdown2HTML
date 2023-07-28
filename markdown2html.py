@@ -1,12 +1,23 @@
 #!/usr/bin/python3
-"""module"""
+"""
+Write a script markdown2html.py that takes an argument 2 strings:
+
+    First argument is the name of the Markdown file
+    Second argument is the output file name
+
+R   equirements:
+
+    If the number of arguments is less than 2: print in STDERR Usage: ./markdown2html.py README.md README.html and exit 1
+    If the Markdown file doesn’t exist: print in STDER Missing <filename> and exit 1
+    Otherwise, print nothing and exit 0
+"""
 
 
 from sys import argv as arg
 
 
 def convert_md_html(md_file, html_file):
-    """" Convert a markdown file in a html file"""
+    """ Convert a markdown file in a html file"""
 
     try:
         # Open the md file, read it and stock it in the variable md_content
