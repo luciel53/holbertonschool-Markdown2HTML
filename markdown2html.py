@@ -4,6 +4,7 @@
 
 from sys import argv as arg
 
+
 def convert_md_html(md_file, html_file):
     """Convert a markdown file in a html file"""
     try:
@@ -13,7 +14,7 @@ def convert_md_html(md_file, html_file):
 
     # if md_file does not exist, message error
     except FileNotFoundError:
-        print("Missing <filename>")
+        print(f"Missing {md_file}")
         exit(1)
 
     # Open the output file in html
