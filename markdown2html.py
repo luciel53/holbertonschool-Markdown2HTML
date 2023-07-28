@@ -4,7 +4,6 @@
 
 from sys import argv as arg
 
-
 def convert_md_html(md_file, html_file):
     """Convert a markdown file in a html file"""
     try:
@@ -17,6 +16,7 @@ def convert_md_html(md_file, html_file):
         exit(1)
     # Open the output file in html
     with open(html_file, 'w') as html:
+        # Write "" in document"
         html.write("")
 
 
