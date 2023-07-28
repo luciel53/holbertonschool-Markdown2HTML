@@ -3,19 +3,18 @@
 
 
 from sys import argv as arg
+import os
 
 
 def convert_md_html(md_file, html_file):
     """Convert a markdown file in a html file"""
-    try:
-        # Open the md file, read it and stock it in the variable md_content
-        with open(md_file, 'r') as md:
-            md_content = md.read()
-
-    # if md_file does not exist, message error
-    except FileNotFoundError:
+    if not os.path.isfile(md_file):
         print(f"Missing {md_file}")
         exit(1)
+
+    # Open the md file, read it and stock it in the variable md_content
+    with open(md_file, 'r') as md:
+        md_content = md.read()
 
     # Open the output file in html
     with open(html_file, 'w') as html:
