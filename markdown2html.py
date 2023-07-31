@@ -21,7 +21,8 @@ def convert_md_html(md_file, html_file):
 
     # create html_content variable
     html_content = ""
-    in_list = False
+    in_ul_list = False
+    in_ol_list = False
 
     for line in lines:
         if line.startswith("#"):
@@ -34,26 +35,41 @@ def convert_md_html(md_file, html_file):
             # add the result to html content
             html_content += (f"<h{level}>{level_txt}</h{level}>\n")
 
-        #adds ul lists
+        # adds ul lists
         elif line.startswith("- "):
             ul_text = line[1:].strip()
             # Checks if not in a list
-            if not in_list:
+            if not in_ul_list:
                 # if not yet in a list, add <ul> tag
                 html_content += "<ul>\n"
                 # Now in list
-                in_list = True
+                in_ul_list = True
             html_content += (f"\t<li>{ul_text}</li>\n")
 
+        # adds ol lists
+        elif line.startswith("* "):
+            ol_text = line[1:].strip()
+            # Checks if not in a list
+            if not in_ol_list:
+                # if not yet in a list, add <ol> tag
+                html_content += "<ol>\n"
+                # Now in list
+                in_ol_list = True
+            html_content += (f"\t<li>{ol_text}</li>\n")
+
         else:
-            # otherwise if in a list but no "-"
-            if in_list:
+            # otherwise if in a ul list but no "-"
+            if in_ul_list:
                 # close the ul tag
                 html_content += (f"</ul>\n")
-                # check not in list
-                in_list = False
-
-
+                # check not in ul list
+                in_ul_list = False
+            # elif in an ol list but no "*"
+            elif in_ol_list:
+                # close the ol tag
+                html_content += (f"</ol>\n")
+                # check not in ol list
+                in_ol_list = False
 
     # Open the output file in html
     with open(html_file, 'w') as html:
