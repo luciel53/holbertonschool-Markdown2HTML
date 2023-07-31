@@ -31,7 +31,7 @@ def convert_md_html(md_file, html_file):
             # deletes the '#' and strip deletes the space
             level_txt = line[num_hashtag:].strip()
             # add the result to html content
-            html_content += (f"<h{level}>{level_txt}</h>\n")
+            html_content += (f"<h{level}>{level_txt}</h{level}>\n")
 
     # Open the output file in html
     with open(html_file, 'w') as html:
