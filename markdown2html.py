@@ -44,7 +44,16 @@ def convert_md_html(md_file, html_file):
                 # Now in list
                 in_list = True
             html_content += (f"\t<li>{ul_text}</li>\n")
-    html_content += (f"</ul>\n")
+
+        else:
+            # otherwise if in a list but no "-"
+            if in_list:
+                # close the ul tag
+                html_content += (f"</ul>\n")
+                # check not in list
+                in_list = False
+
+
 
     # Open the output file in html
     with open(html_file, 'w') as html:
