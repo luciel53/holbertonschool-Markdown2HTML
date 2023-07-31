@@ -21,6 +21,7 @@ def convert_md_html(md_file, html_file):
 
     # create html_content variable
     html_content = ""
+    in_list = False
 
     for line in lines:
         if line.startswith("#"):
@@ -32,6 +33,18 @@ def convert_md_html(md_file, html_file):
             level_txt = line[num_hashtag:].strip()
             # add the result to html content
             html_content += (f"<h{level}>{level_txt}</h{level}>\n")
+
+        #adds ul lists
+        elif line.startswith("- "):
+            ul_text = line[1:].strip()
+            # Checks if not in a list
+            if not in_list:
+                # if not yet in a list, add <ul> tag
+                html_content += "<ul>\n"
+                # Now in list
+                in_list = True
+            html_content += (f"\t<li>{ul_text}</li>\n")
+    html_content += (f"</ul>\n")
 
     # Open the output file in html
     with open(html_file, 'w') as html:
