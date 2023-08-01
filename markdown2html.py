@@ -5,7 +5,7 @@ import sys
 
 
 def convert_md_html(md_file, html_file):
-    """Convert a markdown file into an html file"""
+    """Convert a markdown file into a html file"""
     try:
         # Open the md file, read and store content in the variable md_content
         with open(md_file, 'r') as md:
@@ -23,8 +23,10 @@ def convert_md_html(md_file, html_file):
     html_content = ""
     in_ul_list = False
     in_ol_list = False
+    in_p_tag = False
 
     for line in lines:
+        # adds titles
         if line.startswith("#"):
             # Count the number of hashtags in a line
             num_hashtag = line.count('#')
@@ -57,6 +59,19 @@ def convert_md_html(md_file, html_file):
                 in_ol_list = True
             html_content += (f"\t<li>{ol_text}</li>\n")
 
+        # elif p tag not open, add a p tag and check it
+        elif not in_p_tag and line:
+            # if no p tag, print first tag
+            html_content += (f"<p>\n")
+            # check inside p tag
+            in_p_tag = True
+            html_content += (f"\t{line}\n")
+
+        # If p tag is open, add line
+        elif in_p_tag is True and line:
+            html_content += (f"\t\t<br \\>\n")
+            html_content += (f"\t{line}\n")
+
         else:
             # otherwise if in a ul list but no "-"
             if in_ul_list:
@@ -70,6 +85,10 @@ def convert_md_html(md_file, html_file):
                 html_content += (f"</ol>\n")
                 # check not in ol list
                 in_ol_list = False
+            # elif in p tag, to close the p tag
+            elif in_p_tag:
+                html_content += (f"</p>\n")
+                in_p_tag = False
 
     # Open the output file in html
     with open(html_file, 'w') as html:
