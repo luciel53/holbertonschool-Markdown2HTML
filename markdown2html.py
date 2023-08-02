@@ -42,10 +42,9 @@ def convert_md_html(md_file, html_file):
                 else:
                     # else, close it and check
                     cp_line += (f"</em>")
-                    in_emb_tag == False
+                    in_emb_tag = False
                 # pass the 2 characters
                 i += 2
-
 
             elif line[i:i+2] == "**":
                 if not in_b_tag:
@@ -108,7 +107,6 @@ def convert_md_html(md_file, html_file):
             html_content += (f"\t\t<br \\>\n")
             html_content += (f"\t{line}\n")
 
-
         else:
             # otherwise if in a ul list but no "-"
             if in_ul_list:
@@ -126,7 +124,6 @@ def convert_md_html(md_file, html_file):
             elif in_p_tag:
                 html_content += (f"</p>\n")
                 in_p_tag = False
-
 
     # Open the output file in html
     with open(html_file, 'w') as html:
