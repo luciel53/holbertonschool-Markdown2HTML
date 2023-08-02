@@ -24,8 +24,44 @@ def convert_md_html(md_file, html_file):
     in_ul_list = False
     in_ol_list = False
     in_p_tag = False
+    in_emb_tag = False
+    in_b_tag = False
 
     for line in lines:
+        i = 0
+        cp_line = ""
+
+        while i < len(line):
+            # if part of string is '__':
+            if line[i:i+2] == "__":
+                # if we're not in an <em> tag
+                if not in_emb_tag:
+                    # open it and check for
+                    cp_line += (f"<em>")
+                    in_emb_tag = True
+                else:
+                    # else, close it and check
+                    cp_line += (f"</em>")
+                    in_emb_tag == False
+                # pass the 2 characters
+                i += 2
+
+
+            elif line[i:i+2] == "**":
+                if not in_b_tag:
+                    cp_line += (f"<b>")
+                    in_b_tag = True
+                else:
+                    cp_line += (f"</b>")
+                    in_b_tag = False
+                i += 2
+            # next character in the loop
+            else:
+                cp_line += line[i]
+                i += 1
+
+        line = cp_line
+
         # adds titles
         if line.startswith("#"):
             # Count the number of hashtags in a line
@@ -72,6 +108,7 @@ def convert_md_html(md_file, html_file):
             html_content += (f"\t\t<br \\>\n")
             html_content += (f"\t{line}\n")
 
+
         else:
             # otherwise if in a ul list but no "-"
             if in_ul_list:
@@ -89,6 +126,7 @@ def convert_md_html(md_file, html_file):
             elif in_p_tag:
                 html_content += (f"</p>\n")
                 in_p_tag = False
+
 
     # Open the output file in html
     with open(html_file, 'w') as html:
