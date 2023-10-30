@@ -26,6 +26,8 @@ def convert_md_html(md_file, html_file):
     in_p_tag = False
     in_emb_tag = False
     in_b_tag = False
+    in_parenthisis = False
+
 
     for line in lines:
         i = 0
@@ -54,6 +56,22 @@ def convert_md_html(md_file, html_file):
                     cp_line += (f"</b>")
                     in_b_tag = False
                 i += 2
+
+            elif line[i:i+2] == "((":
+                if not in_parenthisis:
+                    cp_line += line.lstrip("((").replace("C", "").replace("c", "")
+                    in_parenthisis = True
+                    i += 2
+                else:
+                    cp_line += line[i]
+            elif line[i:i+2] == "))":
+                if in_parenthisis:
+                    cp_line += line[i+2:].lstrip(")").lstrip(")")
+                    in_parenthisis = False
+                    i += 2
+                else:
+                    cp_line += line[i]
+
             # next character in the loop
             else:
                 cp_line += line[i]
