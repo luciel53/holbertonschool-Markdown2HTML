@@ -292,3 +292,6 @@ Spacing and new lines between HTML tags don’t need to be exactly this one
 
 - GitHub repository: `holbertonschool-Markdown2HTML`
 - File: `markdown2html.py`
+
+
+Author : Lucie Leroty
