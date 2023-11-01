@@ -294,4 +294,6 @@ Spacing and new lines between HTML tags don’t need to be exactly this one
 - File: `markdown2html.py`
 
 
-**Author** : Lucie Leroty
+## Author:
+
+Lucie Leroty ( :email: : l.leroty.pro@gmail.com , :link: : www.linkedin.com/in/lucie-leroty )
