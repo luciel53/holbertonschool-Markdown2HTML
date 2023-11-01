@@ -297,5 +297,6 @@ Spacing and new lines between HTML tags don’t need to be exactly this one
 ## Author:
 
 Lucie Leroty, *student at Holberton School (Fullstack specialization)*
+
 :email: : l.leroty.pro@gmail.com
 :link: : www.linkedin.com/in/lucie-leroty
